@@ -22,7 +22,7 @@ pip install -r requirements.txt
 
 ### Fetch the stats
 ```
-python fetch_stats.py --GitToken <GitToken> --username <GitHub Username> --RepoNames <Repository name>
+python fetch_stats.py --git_token_file <GitToken> --username <GitHub Username> --repo_names <Repository name>
 ```
 
 #### Options/flags:
