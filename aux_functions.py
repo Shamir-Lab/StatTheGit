@@ -15,10 +15,11 @@ BLUE = "94B6D2"
 GREEN = "#A5AB81"
 YELLOW = "#D8B25C"
 
-def plot_stat(xs, ys, repo_names, title="Shamir-Lab", data="Clones", type="offline"):
+def plot_stat(xs, ys, repo_names, title="Shamir-Lab", data="Clones", type="offline", figures_folder=""):
+   
 
     try:
-        os.makedirs("plots")
+        os.makedirs(figures_folder)
     except Exception as e:
         pass
 
@@ -48,7 +49,7 @@ def plot_stat(xs, ys, repo_names, title="Shamir-Lab", data="Clones", type="offli
     )
     if type == "offline":
         # fig.write_image("summary.png")
-        fig.write_html(f"plots/git_stat_{title}_{data}.html")
+        fig.write_html(os.path.join(figures_folder, f"git_stat_{title}_{data}.html"))
         print("saved summary!")
     elif type == "online":
         url = py.plot(fig, filename=repo_name, sharing="public")

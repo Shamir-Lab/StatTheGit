@@ -133,6 +133,10 @@ if __name__ == "__main__":
                 os.makedirs(os.path.dirname(commits_csv_str))
             except:
                 pass
+            try:
+                os.makedirs(os.path.dirname(url_csv_str))
+            except:
+                pass
 
             exposure_csv_file = open(exposure_csv_str, "w")
             exposure_writer = csv.writer(exposure_csv_file)

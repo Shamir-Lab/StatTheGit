@@ -5,3 +5,7 @@
 access_token.txt
 *.pyc
 *.pptx
+/python-venv
+/python-venv-docker
+/__pycache__
+

@@ -60,12 +60,14 @@ if __name__ == "__main__":
     df_report=pd.DataFrame()
 
     # for stat_type in ("exposure", "commits"):
-
+    
     folder = os.path.join(args.stat_folder, "exposure")
     try:
         os.makedirs(os.path.join(args.stat_folder, "reports"))
     except Exception as e:
         pass
+
+    figures_folder=os.path.join(args.stat_folder,'plots')
 
     f = []
     _, _, files = os.walk(folder).__next__()
@@ -125,6 +127,7 @@ if __name__ == "__main__":
         title=args.namespace,
         data="Clones",
         type=args.display_type,
+        figures_folder=figures_folder
     )
     plot_stat(
         xs=xs,
@@ -133,6 +136,7 @@ if __name__ == "__main__":
         title=args.namespace,
         data="Views",
         type=args.display_type,
+        figures_folder=figures_folder
     )
 
     folder = os.path.join(args.stat_folder, "commits")
