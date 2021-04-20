@@ -35,7 +35,7 @@ python fetch_stats.py --git_token_file <GitToken> --username <GitHub Username> -
 
 Running fetch_stats.py will create a folder `repo_stats/<-namespace->`. The view and clone stats for the mentioned repositories will be fetched from the GitHub profile and saved as a csv file. If the csv files for the repository already exists the code appends the fetched data to existing stats taking care of issues such as duplicate stats, missing dates etc.
 
-** Note that Github saves only statistics of the last 14 days. To avoid loss of information, you need to run `fetch_stats.py` at least every 14 days (e.g. by using a cronjob). We recommend to run `fetch_stats.py` every 3-4 days, to avoid a scenario in which statistics were not collected due to a server fault (e.g. server was down).**    
+**Note that Github saves only statistics of the last 14 days. To avoid loss of information, you need to run `fetch_stats.py` at least every 14 days (e.g. by using a cronjob). We recommend to run `fetch_stats.py` every 3-4 days, to avoid a scenario in which statistics were not collected due to a server fault (e.g. server was down).**    
 
 ```
 # Generic
