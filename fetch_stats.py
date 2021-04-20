@@ -81,10 +81,10 @@ if __name__ == "__main__":
             print(clone_stat)
             print(traffic_stat)
             # Find the earliest date between the views and clones
-            if len(clone_stat) > 0:
-                earliest_exposure_date=clone_stat[0].timestamp.date()
-                if len(traffic_stat) > 0 and traffic_stat[0].timestamp.date() < clone_stat[0].timestamp.date():
-                    earliest_exposure_date = traffic_stat[0].timestamp.date()
+            if len(traffic_stat) > 0:
+                earliest_exposure_date=traffic_stat[0].timestamp.date()
+                if len(clone_stat) > 0 and traffic_stat[0].timestamp.date() > clone_stat[0].timestamp.date():
+                    earliest_exposure_date = clone_stat[0].timestamp.date()
 
             else:
                 earliest_exposure_date=datetime.datetime.strptime("1970-01-01", '%Y-%m-%d').date()
@@ -165,7 +165,7 @@ if __name__ == "__main__":
                                 str(earliest_exposure_date), "%Y-%m-%d"
                             ).date()
 
-                            if datetime_obj < compare_date:
+                            if datetime_obj < compare_date or compare_date < datetime.datetime.strptime("1970-01-30", "%Y-%m-%d").date():
                                 exposure_writer.writerow([row[0], row[1], row[2]])
                             else:
                                 break
@@ -186,22 +186,25 @@ if __name__ == "__main__":
                                 str(earliest_commit_date), "%Y-%m-%d"
                             ).date()
 
-                            if datetime_obj < compare_date:
+                            if datetime_obj < compare_date or compare_date < datetime.datetime.strptime("1970-01-30", "%Y-%m-%d").date():
                                 commits_writer.writerow([row[0]])
                             else:
                                 break
                         line_count += 1
 
+            compare_date = datetime.datetime.strptime(str(earliest_exposure_date), "%Y-%m-%d").date()
+            first_date= datetime.datetime.strptime("1970-01-30", "%Y-%m-%d").date()
+            if compare_date>first_date or not os.path.exists(exposure_csv_str_temp):
+                for (key_clone, value_clone), (key_traffic, value_traffic) in zip(
+                    clone_array.items(), traffic_array.items()
+                ):
+                    exposure_writer.writerow([key_clone, value_clone, value_traffic])
 
-            for (key_clone, value_clone), (key_traffic, value_traffic) in zip(
-                clone_array.items(), traffic_array.items()
-            ):
-                exposure_writer.writerow([key_clone, value_clone, value_traffic])
+                exposure_csv_file.close()
 
             for commit in commits:
                 commits_writer.writerow([commit])
 
-            exposure_csv_file.close()
             commits_csv_file.close()
 
             exposure_csv_file = open(exposure_csv_str_temp, "w")

@@ -1,4 +1,4 @@
-/repo_stats
+/repo_stats*
 /.idea
 /plots
 *.swp
@@ -6,6 +6,5 @@ access_token.txt
 *.pyc
 *.pptx
 /python-venv
-/python-venv-docker
 /__pycache__
 
