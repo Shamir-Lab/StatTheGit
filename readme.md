@@ -28,11 +28,10 @@ python fetch_stats.py --git_token_file <GitToken> --username <GitHub Username> -
 ```
 
 #### Options/flags:
-* `--git_token_file` A file that contains GitHub personal access token
-* `--username` The Github username
-* `--namespace` The Github namespace in which projects reside. can also be identical to username
-* `--repo_names` Lastest date to include for clones and views
-* end_date
+* `--git_token_file` A file that contains GitHub personal access token.
+* `--username` The Github username.
+* `--namespace` The Github namespace in which projects reside. can also be identical to username.
+* `--repo_names` Lastest date to include for clones and views.
 
 
 Running fetch_stats.py will create a folder `repo_stats/<-namespace->`. The view and clone stats for the mentioned repositories will be fetched from the GitHub profile and saved as a csv file. If the csv files for the repository already exists the code appends the fetched data to existing stats taking care of issues such as duplicate stats, missing dates etc.
@@ -75,9 +74,8 @@ Note that this functionality exists the original project, **but was never tested
 
 
 #### Options/flags:
-* `--stat_folder` Folder to the GitHub stat csvs
-* `--display_type` Plot display functionality: could be **off** for no plots at all (generates table report only), **offline** for a static html-based plotly figure, and **online** for online html that can be embedded in an existing website using Plotly. **The `online` option was never tested for StatTheGit4TAU**
-* `--start_date` Ealiest date to include for clones and views
-* `--end_date` Lastest date to include for clones and views
-* end_date
+* `--stat_folder` Folder to the GitHub stat csvs.
+* `--display_type` Plot display functionality: can be `off` for no plots at all (generates table report only), `offline` for a static html-based plotly figure, and `online` for online html that can be embedded in an existing website using Plotly. **The `online` option was never tested for StatTheGit4TAU**.
+* `--start_date` Ealiest date to include for clones and views.
+* `--end_date` Lastest date to include for clones and views.
 
