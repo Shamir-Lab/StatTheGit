@@ -1,11 +1,13 @@
 # StatTheGit4TAU Python Code to Maintain Statistics for GitHub Repositories in TAU's bioinformatic groups
 
 ## What is StatTheGit
-StatTheGit4TAU is a python based tool to fetch, maintain and display GitHub clone and views statistics. 
+Github recornds clone and views statistics for the past two weeks noly.
+
+StatTheGit4TAU is a python based tool to fetch, maintain and display GitHub clone and views statistics for unlimited time. 
 
 This project was forked from [StatTheGit](https://medium.com/@aqeel.anwar/maintaining-github-stats-for-more-than-14-days-31653bd1d7e1?sk=0d4a7e0c1b21df8a6e715719109dcecc) repo.
 
-A detailed documentation of the original one and can be found [here](https://medium.com/@aqeel.anwar/maintaining-github-stats-for-more-than-14-days-31653bd1d7e1?sk=0d4a7e0c1b21df8a6e715719109dcecc)
+A detailed documentation of the original tool and can be found [here](https://medium.com/@aqeel.anwar/maintaining-github-stats-for-more-than-14-days-31653bd1d7e1?sk=0d4a7e0c1b21df8a6e715719109dcecc)
 
 ## How to use StatTheGit:
 
@@ -54,29 +56,28 @@ Running fetch_stats.py will create a folder `repo_stats/<-namespace->`. The view
 ```
 
 ### Display the stats
-The original StatTheGit can be used to create and update online graphs which can then be displayed on your personal website [like this](http://www.aqeel-anwar.com/#GitHubStat).
-
-This functionality exists in this project, **but was never tested**
 
 #### Offline graphs and reports:
-You can generate a summarizing table in a csv format, and a plots that tracks (unique) views and clones through time.
-
-#### Options/flags:
-* `--stat_folder` Folder to the GitHub stat csvs
-* `--display_type` Plot display functionality: could be **off** for no plots at all (generates table report only), **offline** for a static html-based plotly figure, and **online** for online html that can be embedded in an existing website using Plotly. **This functionality Was never been tested for StatTheGit4TAU**
-* `--start_date` Ealiest date to include for clones and views
-* `--end_date` Lastest date to include for clones and views
-* end_date
-
+You can generate a summarizing table in a csv format, and a plot that tracks (unique) views and clones through time.
 
 ```
 python display_stats.py --stat_folder repo_stats --display_type 'offline' --start_date --end_date "2021-01-01" --end_date "2021-02-01" 
 ```
 
-Running the above command will generate one interactive graph per repository displaying the views and clones statistics.
+#### Online graphs:
+Plotly is being used to plot the Github graphs. In order to create the graphs online, and have it displayed on your website, chart studio account needs to be created ([see here](https://medium.com/@aqeel.anwar/maintaining-github-stats-for-more-than-14-days-31653bd1d7e1?sk=0d4a7e0c1b21df8a6e715719109dcecc)). Once you have the API key you can use the following commands to create online graphs that can then be shared on websites.
 
-#### Online Graphs:
-Plotly is being used to plot the Github graphs. In order to create the graphs online, and have it displayed on your website, chart studio account needs to be created [Details here](https://medium.com/@aqeel.anwar/maintaining-github-stats-for-more-than-14-days-31653bd1d7e1?sk=0d4a7e0c1b21df8a6e715719109dcecc). Once you have the API key you can use the following commands to create online graphs that can then be shared on websites.
 ```
 python display_stats.py --stat_folder repo_stats --display_type 'online' --username <plotly-username> --api_key <plotly-api-key
 ```
+
+Note that this functionality exists the original project, **but was never tested for StatTheGit4TAU**
+
+
+#### Options/flags:
+* `--stat_folder` Folder to the GitHub stat csvs
+* `--display_type` Plot display functionality: could be **off** for no plots at all (generates table report only), **offline** for a static html-based plotly figure, and **online** for online html that can be embedded in an existing website using Plotly. **The `online` option was never tested for StatTheGit4TAU**
+* `--start_date` Ealiest date to include for clones and views
+* `--end_date` Lastest date to include for clones and views
+* end_date
+
