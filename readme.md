@@ -13,12 +13,12 @@ A detailed documentation of the original tool and can be found [here](https://me
 
 ### Clone the repository
 ```
-git clone https://github.com/Shamir-Lab/StatTheGit
+git clone https://github.com/Shamir-Lab/StatTheGit4TAU
 ```
 
 ### Install required packages
 ```
-cd StatTheGit
+cd StatTheGit4TAU
 pip install -r requirements.txt
 ```
 
