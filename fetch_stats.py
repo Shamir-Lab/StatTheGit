@@ -8,6 +8,7 @@ from tqdm import tqdm
 import argparse
 from aux_functions import display_StatTheGit
 
+
 # Command-line input setup
 parser = argparse.ArgumentParser(
     description="StatTheGit - Maintain GitHub repository stats for more than 14 days"

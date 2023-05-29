@@ -169,6 +169,7 @@ if __name__ == "__main__":
         if file.endswith(".txt") and "_temp" not in file:
             print("Processing: ", file)
             path = folder + "/" + file
+            print(path)
             df = pd.read_csv(path)
             df_report.loc[os.path.splitext(file)[0],"URL"]=df.URL.iloc[0]
 
